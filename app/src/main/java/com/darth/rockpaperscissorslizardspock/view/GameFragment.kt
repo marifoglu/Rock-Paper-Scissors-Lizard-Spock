@@ -15,6 +15,9 @@ import com.darth.rockpaperscissorslizardspock.R
 import com.darth.rockpaperscissorslizardspock.databinding.FragmentGameBinding
 import com.darth.rockpaperscissorslizardspock.db.GameEntity
 import com.darth.rockpaperscissorslizardspock.viewmodel.GameViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class GameFragment : Fragment() {
@@ -45,10 +48,10 @@ class GameFragment : Fragment() {
     private var sessionScoreComputer: Int = 0
     private var gameCounter: Int = 0
 
+    private val scope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -80,19 +83,14 @@ class GameFragment : Fragment() {
         gameList = ArrayList<Game>()
         gameAdapter = GameAdapter(gameList)
 
-
         return view
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         gameViewModel = ViewModelProvider(this)[GameViewModel::class.java]
     }
-
-
-
 
     private fun playGame(player: String) {
         playerChoice = player
@@ -101,19 +99,18 @@ class GameFragment : Fragment() {
         computerChoice = generateComputerChoice()
         setComputerChoiceImage(computerChoice)
 
-        val gameResult = determineGameResult(player, computerChoice)
+        scope.launch {
 
-        when (gameResult) {
-            "player" -> playerWin()
-            "computer" -> computerWin()
-            else -> draw()
+            when (determineGameResult(player, computerChoice)) {
+                "player" -> playerWin()
+                "computer" -> computerWin()
+                else -> draw()
+            }
         }
 
         gameCounter++
 
-        //if (gameCounter == 1) {
         endSession()
-        //}
     }
 
     private fun generateComputerChoice(): String {
@@ -126,9 +123,9 @@ class GameFragment : Fragment() {
             return "draw"
         }
         when (playerChoice) {
-            "rock" -> when (computerChoice) {
-                "scissors", "lizard" -> return "player"
-                else -> return "computer"
+            "rock" -> return when (computerChoice) {
+                "scissors", "lizard" -> "player"
+                else -> "computer"
             }
             "paper" -> when (computerChoice) {
                 "rock", "spock" -> return "player"
@@ -201,27 +198,20 @@ class GameFragment : Fragment() {
     }
 
     private fun playerWin() {
-        // resultTextView.text = "You Win!"
         sessionScorePlayer++
     }
 
     private fun computerWin() {
-        // resultTextView.text = "Computer Wins!"
         sessionScoreComputer++
     }
 
     private fun draw() {
-        // resultTextView.text = "Draw!"
     }
 
     private fun endSession() {
 
         val playerName = "Player"
         val computerName = "Computer"
-
-//        val database = this.openOrCreateDatabase("Game", AppCompatActivity.MODE_PRIVATE, null)
-//        database.execSQL("CREATE TABLE IF NOT EXISTS game (id INTEGER PRIMARY KEY, winner VARCHAR, loser VARCHAR, date VARCHAR)")
-
 
         if (sessionScorePlayer > sessionScoreComputer) {
             // Room Insert
@@ -239,60 +229,7 @@ class GameFragment : Fragment() {
         sessionScorePlayer = 0
         sessionScoreComputer = 0
         gameCounter = 0
-
     }
-/*
-    private fun gameResult(winnerName: String, loserName: String, database: SQLiteDatabase): Long {
-        val currentDateTime = Calendar.getInstance().time
-        val sqlDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-
-        val sqlString = "INSERT INTO game (winner, loser, date) VALUES (?, ?, ?)"
-        val sqlStringStatement = database.compileStatement(sqlString)
-        sqlStringStatement.bindString(1, winnerName)
-        sqlStringStatement.bindString(2, loserName)
-        sqlStringStatement.bindString(3, sqlDateFormat.format(currentDateTime))
-
-        return try {
-            sqlStringStatement.executeInsert()
-        } catch (e: Exception) {
-            Log.e("TAG", "Error inserting game result: ${e.localizedMessage}")
-            -1L
-        }
-    }
-
- */
-
-    /*
-    private fun getGameResult(){
-        try {
-            val database = this.openOrCreateDatabase("Game", MODE_PRIVATE, null)
-            database.execSQL("CREATE TABLE IF NOT EXISTS game (id INTEGER PRIMARY KEY, winner VARCHAR, loser VARCHAR, date VARCHAR)")
-
-            val cursor = database.rawQuery("SELECT * FROM game ORDER BY id DESC", null)
-            val getID = cursor.getColumnIndex("id")
-            val getWinner = cursor.getColumnIndex("winner")
-            val getLoser = cursor.getColumnIndex("loser")
-
-            while (cursor.moveToNext()){
-                val gameId = cursor.getInt(getID)
-                val gameWinner = cursor.getString(getWinner)
-                val gameLoser = cursor.getString(getLoser)
-
-                val game = Game(gameId, gameWinner, gameLoser)
-                gameList.add(game)
-            }
-
-            gameAdapter.notifyDataSetChanged()
-            cursor.close()
-
-        }catch (e: java.lang.Exception){
-            Log.e("TAG", "Error inserting game result: ${e.localizedMessage}")
-        }
-    }
-
-     */
-
-
 
     private fun insertGame(winnerName: String, loserName: String){
 
@@ -308,5 +245,4 @@ class GameFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
