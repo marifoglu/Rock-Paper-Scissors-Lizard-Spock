@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RockPaperScissorsLizardSpock</string>
-    <string name="_3_game_results">3 Game Results</string>
+    <string name="id">ID</string>
+    <string name="winner">Winner</string>
+    <string name="loser">Loser</string>
+    <string name="games_result">Games Result</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

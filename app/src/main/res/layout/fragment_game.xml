@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".view.GameFragment">
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="210sp"
+        android:layout_marginTop="5dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:padding="5dp"
+        android:rowCount="2"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:useDefaultMargins="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/leftCardView"
+            android:layout_width="175dp"
+            android:layout_height="185dp"
+            android:layout_row="0"
+            android:layout_rowWeight="0"
+            android:layout_column="0"
+            android:layout_columnWeight="0"
+            android:layout_margin="5dp"
+            android:background="#ffffff"
+            app:cardCornerRadius="8sp"
+            android:layout_gravity="center">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Player"
+                    android:layout_gravity="center">
+                </TextView>
+                <ImageView
+                    android:id="@+id/playerChoiceImageView"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:padding="2dp"
+                    android:src="@drawable/spock"></ImageView>
+                <TextView
+                    android:id="@+id/playerChoiceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text=""></TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/rightCardView"
+            android:layout_width="175dp"
+            android:layout_height="185dp"
+            android:layout_row="0"
+            android:layout_rowWeight="0"
+            android:layout_column="1"
+            android:layout_columnWeight="0"
+            android:layout_margin="5dp"
+            android:background="#ffffff"
+            app:cardCornerRadius="8sp"
+            android:layout_gravity="center">
+>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Computer"
+                    android:layout_gravity="center">
+                </TextView>
+                <ImageView
+                    android:id="@+id/computerChoiceImageView"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:padding="2dp"
+                    android:src="@drawable/lizard"></ImageView>
+
+                <TextView
+                    android:id="@+id/computerChoiceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=""></TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayoutButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:alignmentMode="alignMargins"
+        android:background="#ffffff"
+        android:columnCount="5"
+        android:columnOrderPreserved="false"
+        android:padding="5dp"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout">
+
+        <ImageView
+            android:id="@+id/rockIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:onClick="paper_button"
+            android:padding="2dp"
+            android:src="@drawable/rock_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/paperIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:onClick="rock_button"
+            android:padding="2dp"
+            android:src="@drawable/paper_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/scissorsIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:onClick="scissors_button"
+            android:padding="2dp"
+            android:src="@drawable/scissors_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/spockIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:layout_gravity="center"
+            android:onClick="spock_button"
+            android:padding="2dp"
+            android:src="@drawable/spock_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/lizardIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_rowWeight="0"
+            android:layout_columnWeight="0"
+            android:onClick="lizard_button"
+            android:padding="2dp"
+            android:src="@drawable/lizard_icon"></ImageView>
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayoutButtons">
+
+
+        <TextView
+            android:id="@+id/gameResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/games_result" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="1"
+            android:columnCount="4"
+            android:layout_margin="3dp"
+            android:layout_gravity="start"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/rowGap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:text="   "
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/rowId"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:text="Games"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/rowWinner"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_gravity="start"
+                android:layout_margin="5dp"
+                android:text="@string/winner"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/rowLoser"
+                android:layout_width="141dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_gravity="start"
+                android:layout_margin="5dp"
+                android:text="@string/loser"
+                android:textSize="12sp" />
+        </GridLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
