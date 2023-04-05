@@ -11,7 +11,7 @@
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
-        android:layout_height="210sp"
+        android:layout_height="230sp"
         android:layout_marginTop="5dp"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
@@ -119,7 +119,7 @@
         android:background="#ffffff"
         android:columnCount="5"
         android:columnOrderPreserved="false"
-        android:padding="5dp"
+        android:padding="2dp"
         android:rowCount="1"
         android:useDefaultMargins="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,8 +128,8 @@
 
         <ImageView
             android:id="@+id/rockIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:onClick="paper_button"
             android:padding="2dp"
@@ -137,8 +137,8 @@
 
         <ImageView
             android:id="@+id/paperIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:onClick="rock_button"
             android:padding="2dp"
@@ -146,8 +146,8 @@
 
         <ImageView
             android:id="@+id/scissorsIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:onClick="scissors_button"
             android:padding="2dp"
@@ -155,8 +155,8 @@
 
         <ImageView
             android:id="@+id/spockIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_rowWeight="0"
             android:layout_columnWeight="0"
             android:layout_gravity="center"
@@ -166,8 +166,8 @@
 
         <ImageView
             android:id="@+id/lizardIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_rowWeight="0"
             android:layout_columnWeight="0"
             android:onClick="lizard_button"
@@ -179,6 +179,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -191,6 +192,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
+            android:background="@color/light_grey"
             android:text="@string/games_result" />
 
         <GridLayout
@@ -198,7 +201,7 @@
             android:layout_height="wrap_content"
             android:rowCount="1"
             android:columnCount="4"
-            android:layout_margin="3dp"
+            android:layout_margin="2dp"
             android:layout_gravity="start"
             tools:ignore="UselessParent">
 

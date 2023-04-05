@@ -11,7 +11,7 @@
         android:id="@+id/fragment_game"
         android:name="com.darth.rockpaperscissorslizardspock.view.GameFragment"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +28,7 @@
         android:layout_marginEnd="3dp"
         android:columnCount="4"
         android:rowCount="1"
+        android:background="#3E94C9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_game">
@@ -41,6 +42,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:text="   "
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -51,7 +53,8 @@
             android:layout_column="1"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
-            android:text="@string/id"
+            android:text="@string/games"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -64,6 +67,7 @@
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="@string/winner"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -76,6 +80,7 @@
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="@string/loser"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </GridLayout>
 
